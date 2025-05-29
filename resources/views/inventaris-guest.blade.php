@@ -18,9 +18,9 @@
             </div>
         </div>
         <nav class="space-x-8 text-base flex items-center">
-            <a href="/" class="nav-link">Beranda</a>
+            <a href="/beranda" class="nav-link">Beranda</a>
             <a href="/inventaris-guest" class="nav-link active font-bold">Inventaris</a>
-            <a href="#" class="nav-link">Tentang</a>
+            <a href="/tentang" class="nav-link">Tentang</a>
             <a href="#" class="nav-link">Kontak</a>
         </nav>
     </header>

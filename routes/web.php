@@ -17,3 +17,7 @@ Route::get('/inventaris-guest', function () {
 Route::get('/tambah-barang', function () {
     return view('tambah-barang');
 });
+
+Route::get('/tentang', function () {
+    return view('tentang');
+});

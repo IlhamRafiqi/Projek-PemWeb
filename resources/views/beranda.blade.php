@@ -32,7 +32,7 @@
         <nav class="space-x-8 text-base flex items-center">
             <a href="#" class="nav-link active"><b>Beranda</b></a>
             <a href="/inventaris-guest" class="nav-link">Inventaris</a>
-            <a href="#" class="nav-link">Tentang</a>
+            <a href="/tentang" class="nav-link">Tentang</a>
             <a href="#" class="nav-link">Kontak</a>
         </nav>
     </header>
