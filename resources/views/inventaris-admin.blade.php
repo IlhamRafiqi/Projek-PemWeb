@@ -5,9 +5,9 @@
     <title>Sistem Inventaris - SALMAN</title>
     @vite('resources/css/app.css')
 </head>
-<body class="bg-[#f8faf7] text-green-900 font-sans">
+<body class="bg-[#f8faf7] text-green-900 font-sans pt-16">
     <!-- Header -->
-    <header class="bg-green-800 text-white px-8 py-3 flex justify-between items-center border-b border-green-900/10">
+    <header class="bg-green-800 text-white px-8 py-3 flex justify-between items-center border-b border-green-900/10 fixed top-0 left-0 w-full z-10">
         <div class="flex items-center gap-4">
             <div class="w-10 h-10 rounded-full overflow-hidden bg-white flex items-center justify-center">
                 <img src="/images/LogoKabinet.png" alt="Logo Kabinet" class="object-contain w-full h-full" />
@@ -21,7 +21,7 @@
             <a href="/" class="nav-link">Beranda</a>
             <a href="/inventaris" class="nav-link active font-bold">Inventaris</a>
             <a href="/tentang" class="nav-link">Tentang</a>
-            <a href="#" class="nav-link">Kontak</a>
+            <a href="/kontak" class="nav-link">Kontak</a>
         </nav>
     </header>
 

@@ -4,10 +4,30 @@
     <meta charset="UTF-8">
     <title>Sistem Inventaris - SALMAN</title>
     @vite('resources/css/app.css')
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        .nav-link {
+            @apply text-green-100 hover:text-white transition font-medium;
+        }
+        .nav-link.active {
+            @apply font-bold text-white;
+        }
+    </style>
 </head>
-<body class="bg-[#f8faf7] text-green-900 font-sans">
+<body class="bg-[#f8faf7] text-green-900 font-sans pt-16">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+        });
+    </script>
+
     <!-- Header -->
-    <header class="bg-green-800 text-white px-8 py-3 flex justify-between items-center border-b border-green-900/10">
+    <header class="bg-green-800 text-white px-8 py-3 flex justify-between items-center border-b border-green-900/10 fixed top-0 left-0 w-full z-10">
         <div class="flex items-center gap-4">
             <div class="w-10 h-10 rounded-full overflow-hidden bg-white flex items-center justify-center">
                 <img src="/images/LogoKabinet.png" alt="Logo Kabinet" class="object-contain w-full h-full" />
@@ -18,53 +38,53 @@
             </div>
         </div>
         <nav class="space-x-8 text-base flex items-center">
-            <a href="/beranda" class="nav-link">Beranda</a>
+            <a href="/" class="nav-link">Beranda</a>
             <a href="/inventaris-guest" class="nav-link active font-bold">Inventaris</a>
             <a href="/tentang" class="nav-link">Tentang</a>
-            <a href="#" class="nav-link">Kontak</a>
+            <a href="/kontak" class="nav-link">Kontak</a>
         </nav>
     </header>
 
     <!-- Subheader -->
-    <section class="bg-[#eaf6e6] border-b border-green-200 py-6 px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <section class="bg-[#eaf6e6] border-b border-green-200 py-6 px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4" data-aos="fade-down">
         <div>
             <h2 class="text-3xl font-extrabold text-green-800 mb-1">Sistem Inventaris</h2>
             <p class="text-green-600 text-base font-medium">Manajemen Aset dan Barang Organisasi SALMAN</p>
         </div>
         <div class="flex gap-4 items-center">
-            <button id="btnLoginAdmin" type="button" class="border border-green-400 text-green-800 bg-white px-6 py-2 rounded-lg font-semibold hover:bg-green-50 transition">Login Admin</button>
+            <button id="btnLoginAdmin" type="button" class="border border-green-400 text-green-800 bg-white px-6 py-2 rounded-lg font-semibold hover:bg-green-50 transition hover:scale-105 transform duration-300">Login Admin</button>
         </div>
     </section>
 
     <!-- Modal Login Admin -->
     <div id="modalLoginAdmin" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 hidden">
-        <div class="bg-white rounded-xl shadow-lg w-full max-w-xs p-6 relative">
-            <button id="closeModalLogin" class="absolute top-2 right-2 text-gray-400 hover:text-green-700 text-xl">&times;</button>
+        <div class="bg-white rounded-xl shadow-lg w-full max-w-xs p-6 relative" data-aos="zoom-in">
+            <button id="closeModalLogin" class="absolute top-2 right-2 text-gray-400 hover:text-green-700 text-xl transition-colors duration-300">&times;</button>
             <h3 class="text-xl font-bold text-green-800 mb-4 text-center">Login Admin</h3>
             <form onsubmit="event.preventDefault(); window.location.href='/inventaris';">
                 <div class="mb-4">
                     <label class="block text-green-900 text-sm mb-1" for="username">Username</label>
-                    <input id="username" type="text" class="w-full border border-green-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" placeholder="Masukkan username" required>
+                    <input id="username" type="text" class="w-full border border-green-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300 hover:border-green-400" placeholder="Masukkan username" required>
                 </div>
                 <div class="mb-6">
                     <label class="block text-green-900 text-sm mb-1" for="password">Password</label>
-                    <input id="password" type="password" class="w-full border border-green-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" placeholder="Masukkan password" required>
+                    <input id="password" type="password" class="w-full border border-green-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300 hover:border-green-400" placeholder="Masukkan password" required>
                 </div>
-                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg transition">Masuk</button>
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-lg transition-all duration-300 hover:scale-105 transform">Masuk</button>
             </form>
         </div>
     </div>
 
     <!-- Filter & Tambah -->
-    <section class="px-8 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <section class="px-8 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4" data-aos="fade-up" data-aos-delay="100">
         <div class="flex flex-1 gap-2 items-center">
-            <input type="text" placeholder="Cari barang inventaris..." class="flex-1 border border-green-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
-            <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center justify-center">
+            <input type="text" placeholder="Cari barang inventaris..." class="flex-1 border border-green-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300 hover:border-green-400" />
+            <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 transform">
                 <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><circle cx="9" cy="9" r="7" stroke="white" stroke-width="2"/><path d="M15 15L18 18" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
             </button>
         </div>
         <div class="flex gap-2 items-center">
-            <button class="border border-green-400 text-green-800 bg-white px-4 py-2 rounded-lg flex items-center gap-2 font-semibold hover:bg-green-50 transition">
+            <button class="border border-green-400 text-green-800 bg-white px-4 py-2 rounded-lg flex items-center gap-2 font-semibold hover:bg-green-50 transition-all duration-300 hover:scale-105 transform">
                 Semua Kategori
                 <svg width="18" height="18" fill="none" viewBox="0 0 18 18"><path d="M5 7l4 4 4-4" stroke="#4B7B3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
@@ -73,22 +93,22 @@
 
     <!-- Statistik -->
     <section class="px-8 flex flex-wrap gap-4 mb-6">
-        <div class="flex-1 min-w-[180px] bg-green-700 text-white rounded-xl flex flex-col items-center justify-center py-6">
+        <div class="flex-1 min-w-[180px] bg-green-700 text-white rounded-xl flex flex-col items-center justify-center py-6 transition-all duration-300 hover:scale-105 transform" data-aos="fade-up" data-aos-delay="200">
             <div class="text-3xl font-extrabold">156</div>
             <div class="font-semibold mt-1">Total Barang</div>
             <div class="text-sm">Inventaris</div>
         </div>
-        <div class="flex-1 min-w-[180px] border-2 border-green-400 rounded-xl flex flex-col items-center justify-center py-6">
+        <div class="flex-1 min-w-[180px] border-2 border-green-400 rounded-xl flex flex-col items-center justify-center py-6 transition-all duration-300 hover:scale-105 transform" data-aos="fade-up" data-aos-delay="300">
             <div class="text-3xl font-extrabold text-green-700">124</div>
             <div class="font-semibold mt-1 text-green-700">Barang Tersedia</div>
             <div class="text-sm text-green-700">Siap Digunakan</div>
         </div>
-        <div class="flex-1 min-w-[180px] border-2 border-green-400 rounded-xl flex flex-col items-center justify-center py-6">
+        <div class="flex-1 min-w-[180px] border-2 border-green-400 rounded-xl flex flex-col items-center justify-center py-6 transition-all duration-300 hover:scale-105 transform" data-aos="fade-up" data-aos-delay="400">
             <div class="text-3xl font-extrabold text-orange-500">32</div>
             <div class="font-semibold mt-1 text-orange-500">Sedang Dipinjam</div>
             <div class="text-sm text-orange-500">Dalam Penggunaan</div>
         </div>
-        <div class="flex-1 min-w-[180px] border-2 border-green-400 rounded-xl flex flex-col items-center justify-center py-6">
+        <div class="flex-1 min-w-[180px] border-2 border-green-400 rounded-xl flex flex-col items-center justify-center py-6 transition-all duration-300 hover:scale-105 transform" data-aos="fade-up" data-aos-delay="500">
             <div class="text-3xl font-extrabold text-green-700">8</div>
             <div class="font-semibold mt-1 text-green-700">Perlu Perbaikan</div>
             <div class="text-sm text-green-700">Maintenance</div>
@@ -96,8 +116,8 @@
     </section>
 
     <!-- Tabel -->
-    <section class="px-8 pb-8">
-        <div class="bg-white rounded-2xl border border-green-200 overflow-x-auto">
+    <section class="px-8 pb-8" data-aos="fade-up" data-aos-delay="600">
+        <div class="bg-white rounded-2xl border border-green-200 overflow-x-auto transition-all duration-300 hover:shadow-lg">
             <table class="w-full text-sm">
                 <thead>
                     <tr class="bg-green-700 text-white">
@@ -123,7 +143,7 @@
                         <td class="py-3 px-4">20/05/2025</td>
                         <td class="py-3 px-4">-</td>
                         <td class="py-3 px-4 flex gap-2 whitespace-nowrap">
-                            <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold">Kontak</button>
+                            <a href="/kontak"><button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold">Kontak</button></a>
                         </td>
                     </tr>
                     <tr class="border-b last:border-b-0">
@@ -136,7 +156,7 @@
                         <td class="py-3 px-4">18/05/2025</td>
                         <td class="py-3 px-4">Ahmad Fauzi</td>
                         <td class="py-3 px-4 flex gap-2 whitespace-nowrap">
-                            <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold">Kontak</button>
+                            <a href="/kontak"><button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold">Kontak</button></a>
                         </td>
                     </tr>
                     <tr class="border-b last:border-b-0">
@@ -149,7 +169,7 @@
                         <td class="py-3 px-4">15/05/2025</td>
                         <td class="py-3 px-4">-</td>
                         <td class="py-3 px-4 flex gap-2 whitespace-nowrap">
-                            <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold">Kontak</button>
+                            <a href="/kontak"><button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold">Kontak</button></a>
                         </td>
                     </tr>
                     <tr class="border-b last:border-b-0">
@@ -162,7 +182,7 @@
                         <td class="py-3 px-4">10/05/2025</td>
                         <td class="py-3 px-4">-</td>
                         <td class="py-3 px-4 flex gap-2 whitespace-nowrap">
-                            <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold">Kontak</button>
+                            <a href="/kontak"><button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold">Kontak</button></a>
                         </td>
                     </tr>
                     <tr class="border-b last:border-b-0">
@@ -175,7 +195,7 @@
                         <td class="py-3 px-4">12/05/2025</td>
                         <td class="py-3 px-4">Siti Nurhaliza</td>
                         <td class="py-3 px-4 flex gap-2 whitespace-nowrap">
-                            <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold">Kontak</button>
+                            <a href="/kontak"><button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold">Kontak</button></a>
                         </td>
                     </tr>
                     <tr>
@@ -188,7 +208,7 @@
                         <td class="py-3 px-4">08/05/2025</td>
                         <td class="py-3 px-4">-</td>
                         <td class="py-3 px-4 flex gap-2 whitespace-nowrap">
-                            <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold">Kontak</button>
+                            <a href="/kontak"><button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded font-semibold">Kontak</button></a>
                         </td>
                     </tr>
                 </tbody>
@@ -196,11 +216,11 @@
             <div class="flex items-center justify-between px-4 py-2 text-xs text-gray-600 border-t border-green-100">
                 <div>Menampilkan 1-6 dari 156 barang</div>
                 <div class="flex gap-1">
-                    <button class="w-8 h-8 rounded bg-green-100 text-green-700 font-bold">1</button>
-                    <button class="w-8 h-8 rounded hover:bg-green-100">2</button>
-                    <button class="w-8 h-8 rounded hover:bg-green-100">3</button>
+                    <button class="w-8 h-8 rounded bg-green-100 text-green-700 font-bold transition-all duration-300 hover:scale-110 transform">1</button>
+                    <button class="w-8 h-8 rounded hover:bg-green-100 transition-all duration-300 hover:scale-110 transform">2</button>
+                    <button class="w-8 h-8 rounded hover:bg-green-100 transition-all duration-300 hover:scale-110 transform">3</button>
                     <span class="px-2">...</span>
-                    <button class="w-8 h-8 rounded hover:bg-green-100">26</button>
+                    <button class="w-8 h-8 rounded hover:bg-green-100 transition-all duration-300 hover:scale-110 transform">26</button>
                 </div>
             </div>
         </div>
